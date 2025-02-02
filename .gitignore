@@ -23,5 +23,6 @@ testdir/
 modified_sources/
 outputdir/
 
-# Ignore .env file
+# Ignore .env file but keep the example
 .env
+!.env.example
