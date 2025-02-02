@@ -22,3 +22,6 @@ Pipfile.lock
 testdir/
 modified_sources/
 outputdir/
+
+# Ignore .env file
+.env
