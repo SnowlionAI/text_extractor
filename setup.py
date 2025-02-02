@@ -4,7 +4,7 @@ setup(
     name="text_extractor",
     version="1.0",
     packages=find_packages(),
-    install_requires=["openai", "python-dotenv"],
+    install_requires=["openai", "python-dotenv", "jsonschema"],
     entry_points={
         "console_scripts": [
             "text-extractor=text_extractor.cli:main",

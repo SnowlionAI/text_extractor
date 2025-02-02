@@ -1,0 +1,18 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Text Extractor",
+            "type": "python",
+            "request": "launch",
+            "module": "text_extractor.cli",
+            "args": ["${workspaceFolder}/testdir/temp"],
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "python": "python3",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}"
+            }
+        }
+    ]
+}
