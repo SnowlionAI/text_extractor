@@ -22,6 +22,8 @@ Pipfile.lock
 testdir/
 modified_sources/
 outputdir/
+outputdir_test/
+test/
 
 # Ignore .env file but keep the example
 .env
