@@ -11,7 +11,7 @@ Text Extractor is a command-line tool that helps you extract and internationaliz
 - **Adjustable through the systems prompt** Easily adjust processing and output via the system prompt (see `prompt.py`)
 - **Works via CLI or as a Python module**
 - **Saves modified source files** to a separate output directory (default: `modified_sources`), preserving the complete relative path
-- **Skips files** that have already been processed and exist in the output directory
+- **Skips files** that have already been processed and exist in the output directory (and are newer than the source file)
 
 
 ## Prerequisites

@@ -2,11 +2,14 @@ import os
 import json
 import hashlib
 import jsonschema
-from text_extractor.config import MODEL, SUPPORTED_EXTENSIONS
+from text_extractor.config import MODEL, SUPPORTED_EXTENSIONS, RATE_LIMIT_RPM, RATE_LIMIT_RPD, MINIMUM_WAIT_SECONDS
 from text_extractor.prompt import SYSTEM_PROMPT  # Import the system prompt
 from text_extractor.extractor_tool import EXTRACTOR_TOOL
 
-from text_extractor.replace_check import check_replace
+# from text_extractor.replace_check import check_replace
+
+from text_extractor.rpd_checker import rpd_checker
+from text_extractor.rpm_checker import rpm_checker
 
 import time
 
@@ -100,6 +103,16 @@ def process_directory(directory_root, output_json="translations.json", output_di
 
                 # Process the file
 
+                wait_seconds_for_day = rpd_checker(RATE_LIMIT_RPD, MINIMUM_WAIT_SECONDS)
+                if wait_seconds_for_day > 0:
+                    print(f"Daily rate limit exceeded. Waiting {wait_seconds_for_day} seconds before processing {new_file_path}")
+                    time.sleep(wait_seconds_for_day)
+
+                wait_seconds = rpm_checker(RATE_LIMIT_RPM, MINIMUM_WAIT_SECONDS)
+                if wait_seconds > 0:
+                    print(f"Minute rate limit exceeded. Waiting {wait_seconds} seconds before processing {new_file_path}")
+                    time.sleep(wait_seconds)
+
                 try:
                     modified_code, translations = process_file(original_file_path)
                 except Exception as e:
@@ -153,4 +166,6 @@ def process_directory(directory_root, output_json="translations.json", output_di
                 with open(output_json_file, "w", encoding="utf-8") as f:
                     json.dump(updated_data, f, indent=4, ensure_ascii=False)
                     print(f"✅ Processing complete. Modified files are saved under '{output_directory}', and translations are saved to '{output_json_file}'.")
+
+
 
