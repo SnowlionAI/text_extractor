@@ -8,7 +8,7 @@
             "module": "text_extractor.cli",
             "args": [
                 "${workspaceFolder}/testdir/frontend/src/components",
-                "--outputdir", "${workspaceFolder}/outputdir/components3",
+                "--outputdir", "${workspaceFolder}/outputdir/components",
                 "--subdir", "AccountSettings,Assets,Auth,CallSheet,Card,Cards,CardsActionsBar,Carousel,Checkout,CustomHeadings,DataDashboard,FilmSpace,Inbox,JiraImporter,LogOutSurvey,Manage,Menu,NavBar,Network,Notes,OKR,OnBoarding,Resources,Smize,Standup,Stories,Strategizer,StripBoard,Teams,ToDos,UIElements,UserAccountSettings,VoIP,Vpc,Workspace,film-festivals,filmmakers,films,overlays,player,script,uploads,.",
              ],
             "console": "integratedTerminal",
